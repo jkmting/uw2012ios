@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 var numQueue = [ "1","2","3","4","5","6","7","8","9","10"]
 var customersQList = [CustomersQ]()
@@ -18,6 +19,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        //Connect to Parse.com
+        //local Datastore
+        Parse.enableLocalDatastore()
+        //initialize Parse
+        Parse.setApplicationId("BSfAw7RJoeHvQdSKv41Yv6PWKApsxKqfKGN8ecNy",
+            clientKey: "2FxRkyF0dCmfEghPIdR6BmNPvroj5c05tuLoQ1ek")
+        
         //init customersQList
         for queue in numQueue {
             let customerQ = CustomersQ(name_: queue)
