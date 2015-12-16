@@ -8,14 +8,14 @@
 
 import UIKit
 
-class FirstViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class FirstViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, QueueCellDelegate {
     @IBOutlet weak var queueCollectionView_ol: UICollectionView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
 
-        queueCollectionView_ol.reloadData()
+        collectionReload()
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,8 +48,12 @@ class FirstViewController: UIViewController, UICollectionViewDelegate, UICollect
         return cell
     }
     
-    func showAlert(controller: UIViewController) {
-        presentViewController(controller, animated: true, completion: nil)
+    func presentAlert(controller_: UIViewController) {
+        presentViewController(controller_, animated: true, completion: nil)
+    }
+    
+    func collectionReload() {
+        queueCollectionView_ol.reloadData()
     }
     
 }

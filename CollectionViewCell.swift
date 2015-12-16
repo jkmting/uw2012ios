@@ -9,15 +9,16 @@
 import UIKit
 
 protocol QueueCellDelegate : NSObjectProtocol {
-    func showAlert(controller: UIViewController) -> Void;
+    func collectionReload()
+    func presentAlert(controller_: UIViewController) -> Void;
 }
 
 class CollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var name_ol: UILabel!
     @IBOutlet weak var pplInQueue_ol: UILabel!
     @IBOutlet weak var seat_ol: UIButton!
-    weak var delegate: FirstViewController?
-
+    weak var delegate: QueueCellDelegate?
+    
     @IBAction func seat(sender: AnyObject) {
         
         let customerQ = customersQList[Int(name_ol.text!)! - 1]
@@ -36,7 +37,7 @@ class CollectionViewCell: UICollectionViewCell {
             customerQ.seat()
             //disable seat button if queue empty
 
-            self.delegate?.queueCollectionView_ol.reloadData()
+            self.delegate?.collectionReload()
         }))
         
         confirmAlert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (action: UIAlertAction!) in
@@ -44,7 +45,7 @@ class CollectionViewCell: UICollectionViewCell {
         }))
         
         if delegate?.respondsToSelector("showAlert:") != nil {
-            delegate?.showAlert(confirmAlert)
+            delegate?.presentAlert(confirmAlert)
         }
     }
 }

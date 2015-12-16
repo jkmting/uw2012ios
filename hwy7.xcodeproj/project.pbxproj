@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		CA08CFEE1C06AC7F002E22C8 /* AddToQueueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08CFED1C06AC7F002E22C8 /* AddToQueueViewController.swift */; };
 		CA55C99B1C14DDCC00887AC5 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA55C99A1C14DDCC00887AC5 /* LogInViewController.swift */; };
+		CA55C99D1C1CC93500887AC5 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA55C99C1C1CC93500887AC5 /* Utils.swift */; };
 		CADD0A011BFEB1EA008AC92A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADD0A001BFEB1EA008AC92A /* AppDelegate.swift */; };
 		CADD0A031BFEB1EA008AC92A /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADD0A021BFEB1EA008AC92A /* FirstViewController.swift */; };
 		CADD0A051BFEB1EA008AC92A /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADD0A041BFEB1EA008AC92A /* SecondViewController.swift */; };
@@ -26,6 +27,7 @@
 		CA08CFED1C06AC7F002E22C8 /* AddToQueueViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddToQueueViewController.swift; sourceTree = "<group>"; };
 		CA55C9951C14BF8800887AC5 /* hwy7-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "hwy7-Bridging-Header.h"; sourceTree = "<group>"; };
 		CA55C99A1C14DDCC00887AC5 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		CA55C99C1C1CC93500887AC5 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		CA9C33D7F1935B2DA2F8E242 /* Pods-hwy7.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hwy7.release.xcconfig"; path = "Pods/Target Support Files/Pods-hwy7/Pods-hwy7.release.xcconfig"; sourceTree = "<group>"; };
 		CADD09FD1BFEB1EA008AC92A /* hwy7.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hwy7.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CADD0A001BFEB1EA008AC92A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 				CADD0A0E1BFEB1EA008AC92A /* Info.plist */,
 				CA55C9951C14BF8800887AC5 /* hwy7-Bridging-Header.h */,
 				CA55C99A1C14DDCC00887AC5 /* LogInViewController.swift */,
+				CA55C99C1C1CC93500887AC5 /* Utils.swift */,
 			);
 			path = hwy7;
 			sourceTree = "<group>";
@@ -234,6 +237,7 @@
 				CADD0A151C025C5B008AC92A /* CollectionViewCell.swift in Sources */,
 				CADD0A031BFEB1EA008AC92A /* FirstViewController.swift in Sources */,
 				CA08CFEE1C06AC7F002E22C8 /* AddToQueueViewController.swift in Sources */,
+				CA55C99D1C1CC93500887AC5 /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

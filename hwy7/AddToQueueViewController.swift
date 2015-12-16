@@ -22,10 +22,7 @@ class AddToQueueViewController: UIViewController {
 
     @IBAction func submit(sender: AnyObject) {
         if (numPeople_ol.text! == "" && Int(numPeople_ol.text!) <= 0){
-            let errorAlert = UIAlertController(title: "Error", message: "number of people cannot be empty or 0", preferredStyle: UIAlertControllerStyle.Alert)
-            errorAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction!) in
-            }))
-            presentViewController(errorAlert, animated: true, completion: nil)
+            showAlert("Error", msg_: "number of people cannot be empty or 0", controler_: self)
             return
         }
         

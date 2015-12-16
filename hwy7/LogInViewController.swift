@@ -38,6 +38,7 @@ class LogInViewController: UIViewController, PFLogInViewControllerDelegate, PFSi
         if (!username.isEmpty || !password.isEmpty) {
             return true
         } else {
+            showAlert("Error", msg_: "user name and password cannot be empty", controler_: self)
             return false
         }
     }
@@ -54,6 +55,7 @@ class LogInViewController: UIViewController, PFLogInViewControllerDelegate, PFSi
         if let password = info["password"] as? String {
             return password.utf16.count >= 8
         } else {
+            showAlert("Error", msg_: "password must be empty greater or equal to 8", controler_: self)
             return false
         }
     }
@@ -67,6 +69,7 @@ class LogInViewController: UIViewController, PFLogInViewControllerDelegate, PFSi
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     
 
     /*
