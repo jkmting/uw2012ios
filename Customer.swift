@@ -7,36 +7,79 @@
 //
 
 import Foundation
+import Parse
 
-struct Customer{
-    var name:String = ""
-    var phone:Int
-    var lineupTime:NSCalendar?
-    var note:String = ""
-    var seated:Int?
-    var app:Bool = false
+class Customer: PFObject, PFSubclassing {
+    @NSManaged var name:String
+    @NSManaged var phone:Int
+    @NSManaged var note:String
+    @NSManaged var status:String
+    @NSManaged var app:Bool
+    @NSManaged var ppl:Int
+    //Parse properties
+    //@NSManaged var createdAt:NSDate?
+    //@NSManaged var objectId:String
+    //Parse Ini
+    override class func initialize() {
+        struct Static {
+            static var onceToken : dispatch_once_t = 0
+        }
+        dispatch_once(&Static.onceToken) {
+            self.registerSubclass()
+        }
+    }
+
+    static func parseClassName() -> String {
+        return "Customer_test"
+    }
     
-    init(name_:String="", phone_:Int=0) {
+    init(name_:String="", phone_:Int=0, ppl_:Int=1) {
+        super.init()
         name = name_
         phone = phone_
-        //get the current time
-        lineupTime = NSCalendar.currentCalendar()
+        ppl = ppl_
+        status = "Waiting"
+        app = false
     }
     
 }
 
-class CustomersQ {
-    var qName:String?
-    var numWaiting:Int = 0
-    var queue = [Customer]()
+class CustomersQ: PFObject, PFSubclassing{
+    @NSManaged var qName:String?
+    @NSManaged var numWaiting:Int
+    @NSManaged var queue:[Customer]
+    
+    //Parse properties
+    //@NSManaged var createdAt:NSDate?
+    //@NSManaged var objectId:String
+    //Parse override func
+    override class func initialize() {
+        struct Static {
+            static var onceToken : dispatch_once_t = 0
+        }
+        dispatch_once(&Static.onceToken) {
+            self.registerSubclass()
+        }
+    }
+    
+    static func parseClassName() -> String {
+        return "CustomersQ"
+    }
     
     init(name_:String){
+        super.init()
         qName = name_
     }
     
     func addCustomer(customer_: Customer ) {
         queue.append(customer_)
         ++numWaiting
+        //update to server
+        self.saveInBackgroundWithBlock({ (success: Bool,error: NSError?) -> Void in
+            if !success {
+                //TODO:Handling erro
+            }
+        })
     }
     
     func removeCustomer(index_: Int = 0) -> Customer? {
@@ -45,12 +88,21 @@ class CustomersQ {
             return nil
         }
         --numWaiting
+        var ret:Customer
         if index_ == 0 {
-            return queue.removeFirst()
+            ret = queue.removeFirst()
         }
         else {
-            return queue.removeAtIndex(index_)
+             ret = queue.removeAtIndex(index_)
         }
+        //update to server
+        self.saveInBackgroundWithBlock({ (success: Bool,error: NSError?) -> Void in
+            if !success {
+                //TODO:Handling erro
+            }
+        })
+        
+        return ret
         
     }
     

@@ -11,6 +11,7 @@ import Parse
 
 var numQueue = [ "1","2","3","4","5","6","7","8","9","10"]
 var customersQList = [CustomersQ]()
+let createQ = true
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -26,10 +27,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Parse.setApplicationId("BSfAw7RJoeHvQdSKv41Yv6PWKApsxKqfKGN8ecNy",
             clientKey: "2FxRkyF0dCmfEghPIdR6BmNPvroj5c05tuLoQ1ek")
         
-        //init customersQList
-        for queue in numQueue {
-            let customerQ = CustomersQ(name_: queue)
-            customersQList.append(customerQ)
+        //TODO:replace logic to get Q from Host node
+        if createQ {
+            //init customersQList
+            for queue in numQueue {
+                let customerQ = CustomersQ(name_: queue)
+                customerQ.saveInBackgroundWithBlock({ (success: Bool,error: NSError?) -> Void in
+                    if !success {
+                        //TODO:Handling erro
+                    }
+                })
+                customersQList.append(customerQ)
+            }
         }
         return true
     }

@@ -35,8 +35,17 @@ class AddToQueueViewController: UIViewController {
             "Number of people : \(numPeople_ol.text!)", preferredStyle: UIAlertControllerStyle.Alert)
         
         confirmAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction!) in
-            let customersQ = customersQList[Int(self.numPeople_ol.text!)! - 1]
-            let customer = Customer(name_: self.name_ol.text!, phone_: phone)
+            let numPeople = Int(self.numPeople_ol.text!)! - 1
+            let customersQ = customersQList[numPeople]
+            let customer = Customer(name_: self.name_ol.text!, phone_: phone, ppl_: numPeople)
+            customer.saveInBackgroundWithBlock({ (success: Bool, error: NSError?) -> Void in
+                if(success) {
+                    print("Yea!!!!SAVED")
+                }
+                else {
+                    //TODO:error Handling
+                }
+            })
             customersQ.addCustomer(customer)
             
             self.performSegueWithIdentifier("AddToQ2Queue_sg", sender: nil)
