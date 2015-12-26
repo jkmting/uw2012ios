@@ -10,8 +10,7 @@ import UIKit
 import Parse
 
 
-var customersQList = [CustomersQ]()
-let createQ = true
+var customersQList = [CustomersQ]() //TODO: Remove it from golbal
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -26,6 +25,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //initialize Parse
         Parse.setApplicationId("BSfAw7RJoeHvQdSKv41Yv6PWKApsxKqfKGN8ecNy",
             clientKey: "2FxRkyF0dCmfEghPIdR6BmNPvroj5c05tuLoQ1ek")
+        
+        //initializing the PFObject Subclass
+        Customer.initialize()
+        CustomersQ.initialize()
+        
         return true
     }
 

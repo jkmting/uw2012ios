@@ -51,26 +51,36 @@ class LogInViewController: UIViewController, PFLogInViewControllerDelegate, PFSi
             //Logged in!
             let currentUser = PFUser.currentUser()!
             //goto Setup Screen if no restaurant object
-            if let restaurant = currentUser["restaurant"] {
+            if let restaurant = currentUser["restaurant"] as! PFObject? {
                 //load cusomtersQList
-                restaurant.fetchIfNeededInBackgroundWithBlock({ (restaurant: PFObject?, error: NSError?) -> Void in
-                    customersQList = restaurant!["customersQList"] as! [CustomersQ] //TODO: get the actual object
+
+                let query = PFQuery(className: "Restaurant")
+                query.whereKey("objectId", matchesRegex: restaurant.objectId!)
+                query.includeKey("customersQList")
+
+                query.findObjectsInBackgroundWithBlock({ (restaurants: [PFObject]?, error: NSError?) -> Void in
+                    if let restaurants = restaurants  {
+                        for restaurant in restaurants {
+                            customersQList = restaurant["customersQList"] as! [CustomersQ] //TODO: get the actual object
+                            
+                        }
+                    //Go to Queue
                     print("\(customersQList)")
+                    self.performSegueWithIdentifier("LogIn2Queue_sg", sender: nil)
+                    }
                 })
                 
-                //Go to Queue
-                self.performSegueWithIdentifier("LogIn2Queue_sg", sender: nil)
             } else {
                 //Go to Setup
                 self.performSegueWithIdentifier("LogIn2Setup_sg", sender: nil)
             }
         }
-        
+
     }
-    
-    
+
+
     /*
-        ------Sign Up-----
+        ------Sign Up-----cDROJZQAn7
     */
     
     func signUpViewController(signUpController: PFSignUpViewController, shouldBeginSignUp info: [NSObject : AnyObject]) -> Bool {

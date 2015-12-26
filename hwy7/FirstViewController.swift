@@ -29,7 +29,6 @@ class FirstViewController: UIViewController, UICollectionViewDelegate, UICollect
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Queue", forIndexPath: indexPath) as! CollectionViewCell
-
         let customersQ = customersQList[indexPath.row]
         
         cell.name_ol.text = customersQ.qName
