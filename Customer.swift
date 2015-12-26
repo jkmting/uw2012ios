@@ -11,7 +11,7 @@ import Parse
 
 class Customer: PFObject, PFSubclassing {
     @NSManaged var name:String
-    @NSManaged var phone:Int
+    @NSManaged var phone:String
     @NSManaged var note:String
     @NSManaged var status:String
     @NSManaged var app:Bool
@@ -37,7 +37,7 @@ class Customer: PFObject, PFSubclassing {
         super.init()
     }
 
-    init(name_:String="", phone_:Int=0, ppl_:Int=1) {
+    init(name_:String="", phone_:String="", ppl_:Int=1) {
         super.init()
         name = name_
         phone = phone_

@@ -27,7 +27,7 @@ class AddToQueueViewController: UIViewController {
         }
         
         let name = (name_ol.text != nil) ? name_ol.text! : ""
-        let phone = (phone_ol.text != "") ? Int(phone_ol.text!)! : 0
+        let phone = phone_ol.text!
         
         let confirmAlert = UIAlertController(title: "Add Customer", message: "Push confirm to add Customer \n" +
             "Name  : \(name)\n" +

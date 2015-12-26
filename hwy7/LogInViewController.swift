@@ -54,18 +54,19 @@ class LogInViewController: UIViewController, PFLogInViewControllerDelegate, PFSi
             if let restaurant = currentUser["restaurant"] as! PFObject? {
                 //load cusomtersQList
 
-                let query = PFQuery(className: "Restaurant")
-                query.whereKey("objectId", matchesRegex: restaurant.objectId!)
-                query.includeKey("customersQList")
-
-                query.findObjectsInBackgroundWithBlock({ (restaurants: [PFObject]?, error: NSError?) -> Void in
+                let queryRestaurant = PFQuery(className: "Restaurant")
+                queryRestaurant.whereKey("objectId", matchesRegex: restaurant.objectId!)
+                queryRestaurant.includeKey("customersQList")
+                //let queryCostomerQ = PFQuery(className: "CustomerQ")
+                queryRestaurant.includeKey("customersQList.queue")
+                queryRestaurant.findObjectsInBackgroundWithBlock({ (restaurants: [PFObject]?, error: NSError?) -> Void in
                     if let restaurants = restaurants  {
                         for restaurant in restaurants {
                             customersQList = restaurant["customersQList"] as! [CustomersQ] //TODO: get the actual object
                             
                         }
                     //Go to Queue
-                    print("\(customersQList)")
+                    //print("\(customersQList[4].queue)")
                     self.performSegueWithIdentifier("LogIn2Queue_sg", sender: nil)
                     }
                 })
