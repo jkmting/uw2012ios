@@ -53,11 +53,9 @@ class LogInViewController: UIViewController, PFLogInViewControllerDelegate, PFSi
             //goto Setup Screen if no restaurant object
             if let restaurant = currentUser["restaurant"] as! PFObject? {
                 //load cusomtersQList
-
                 let queryRestaurant = PFQuery(className: "Restaurant")
                 queryRestaurant.whereKey("objectId", matchesRegex: restaurant.objectId!)
                 queryRestaurant.includeKey("customersQList")
-                //let queryCostomerQ = PFQuery(className: "CustomerQ")
                 queryRestaurant.includeKey("customersQList.queue")
                 queryRestaurant.findObjectsInBackgroundWithBlock({ (restaurants: [PFObject]?, error: NSError?) -> Void in
                     if let restaurants = restaurants  {
