@@ -36,13 +36,10 @@ class AddToQueueViewController: UIViewController {
         
         confirmAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction!) in
             let numPeople = Int(self.numPeople_ol.text!)! - 1
-            let customersQ = customersQList[numPeople]
+            let customersQ = customersQList[numPeople] //TODO: should use find QList method
             let customer = Customer(name_: self.name_ol.text!, phone_: phone, ppl_: numPeople)
             customer.saveInBackgroundWithBlock({ (success: Bool, error: NSError?) -> Void in
-                if(success) {
-                    print("Yea!!!!SAVED")
-                }
-                else {
+                if(!success) {
                     //TODO:error Handling
                 }
             })

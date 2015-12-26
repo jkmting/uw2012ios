@@ -19,39 +19,62 @@ class LogInViewController: UIViewController, PFLogInViewControllerDelegate, PFSi
     }
     
     override func viewDidAppear(animated: Bool) {
+        
         super.viewDidAppear(true)
         PFUser.logOut()
-        if (PFUser.currentUser() == nil) {
-            var logInController = PFLogInViewController()
+        if let _ = PFUser.currentUser() {
+            self.performSegueWithIdentifier("LogIn2Queue_sg", sender: nil)
+        } else { //present the login screen
+            let logInController = PFLogInViewController()
             logInController.delegate = self
             logInController.fields = [.UsernameAndPassword, .LogInButton, .SignUpButton]
-            var signUpViewController = PFSignUpViewController()
+            let signUpViewController = PFSignUpViewController()
             signUpViewController.delegate = self
-            
             self.presentViewController(logInController, animated: true, completion: nil)
-        } else {
-            self.performSegueWithIdentifier("LogIn2Queue_sg", sender: nil)
         }
     }
     
     func logInViewController(logInController: PFLogInViewController, shouldBeginLogInWithUsername username: String, password: String) -> Bool {
+        
         if (!username.isEmpty || !password.isEmpty) {
             return true
         } else {
             showAlert("Error", msg_: "user name and password cannot be empty", controler_: self)
             return false
         }
+        
     }
     
     func logInViewController(logInController: PFLogInViewController, didLogInUser user: PFUser) {
         self.dismissViewControllerAnimated(false) { () -> Void in
-            self.performSegueWithIdentifier("LogIn2Queue_sg", sender: nil)
+            
+            //Logged in!
+            let currentUser = PFUser.currentUser()!
+            //goto Setup Screen if no restaurant object
+            if let restaurant = currentUser["restaurant"] {
+                //load cusomtersQList
+                restaurant.fetchIfNeededInBackgroundWithBlock({ (restaurant: PFObject?, error: NSError?) -> Void in
+                    customersQList = restaurant!["customersQList"] as! [CustomersQ] //TODO: get the actual object
+                    print("\(customersQList)")
+                })
+                
+                //Go to Queue
+                self.performSegueWithIdentifier("LogIn2Queue_sg", sender: nil)
+            } else {
+                //Go to Setup
+                self.performSegueWithIdentifier("LogIn2Setup_sg", sender: nil)
+            }
         }
-
-        print("LOGIN!!!!")
+        
     }
     
+    
+    /*
+        ------Sign Up-----
+    */
+    
     func signUpViewController(signUpController: PFSignUpViewController, shouldBeginSignUp info: [NSObject : AnyObject]) -> Bool {
+        
         if let password = info["password"] as? String {
             return password.utf16.count >= 8
         } else {
@@ -61,6 +84,7 @@ class LogInViewController: UIViewController, PFLogInViewControllerDelegate, PFSi
     }
     
     func signUpViewController(signUpController: PFSignUpViewController, didSignUpUser user: PFUser) {
+        
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     

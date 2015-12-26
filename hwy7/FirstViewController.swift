@@ -31,6 +31,7 @@ class FirstViewController: UIViewController, UICollectionViewDelegate, UICollect
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Queue", forIndexPath: indexPath) as! CollectionViewCell
 
         let customersQ = customersQList[indexPath.row]
+        
         cell.name_ol.text = customersQ.qName
         cell.pplInQueue_ol.text = "\(customersQ.numWaiting)"
         cell.delegate = self

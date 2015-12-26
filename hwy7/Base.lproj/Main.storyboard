@@ -262,6 +262,79 @@
             </objects>
             <point key="canvasLocation" x="731" y="-188"/>
         </scene>
+        <!--Account Setup-->
+        <scene sceneID="QVa-bp-C0q">
+            <objects>
+                <viewController title="Account Setup" id="HhF-im-0XA" customClass="AccountSetupViewController" customModule="hwy7" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vfv-Oq-z0W"/>
+                        <viewControllerLayoutGuide type="bottom" id="xEU-oX-vBW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ps1-di-CI5" customClass="UIActionSheet">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name of your restaurant" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rvx-2V-2FI">
+                                <rect key="frame" x="177" y="216" width="446" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SGl-xd-dK6">
+                                <rect key="frame" x="177" y="300" width="446" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Description." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="prr-Zc-p0d">
+                                <rect key="frame" x="177" y="510" width="446" height="281"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DYu-Me-ih6">
+                                <rect key="frame" x="377" y="908" width="46" height="30"/>
+                                <state key="normal" title="Done"/>
+                                <connections>
+                                    <action selector="done_ol:" destination="HhF-im-0XA" eventType="touchUpInside" id="9tU-ne-HAs"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SbW-ev-0YD">
+                                <rect key="frame" x="231" y="561" width="253" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kEU-cx-SFG">
+                                <rect key="frame" x="184" y="497" width="439" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="W0M-2N-GX1">
+                                <rect key="frame" x="177" y="392" width="165" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" red="0.25490196078431371" green="0.67843137254901964" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="SbW-ev-0YD"/>
+                                <exclude reference="kEU-cx-SFG"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
+                    <connections>
+                        <outlet property="address_ol" destination="SGl-xd-dK6" id="3E9-ik-xqI"/>
+                        <outlet property="description_ol" destination="prr-Zc-p0d" id="QxA-PU-9YM"/>
+                        <outlet property="name_ol" destination="Rvx-2V-2FI" id="l6p-M8-zFn"/>
+                        <outlet property="phone_ol" destination="W0M-2N-GX1" id="bo9-6K-dbg"/>
+                        <segue destination="49e-Tb-3d3" kind="show" identifier="Setup2Queue_sg" id="lwc-5O-Ahn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H6a-7A-8lM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1140" y="-188"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
@@ -359,6 +432,9 @@
                         </variation>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
+                    <connections>
+                        <segue destination="HhF-im-0XA" kind="show" identifier="LogIn2Setup_sg" id="9pV-VU-cz4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5qe-qg-pHh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -370,6 +446,6 @@
         <image name="second" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="UFK-Gf-a1B"/>
+        <segue reference="lwc-5O-Ahn"/>
     </inferredMetricsTieBreakers>
 </document>

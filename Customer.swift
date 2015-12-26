@@ -33,6 +33,10 @@ class Customer: PFObject, PFSubclassing {
         return "Customer_test"
     }
     
+    override init() {
+        super.init()
+    }
+
     init(name_:String="", phone_:Int=0, ppl_:Int=1) {
         super.init()
         name = name_
@@ -66,9 +70,15 @@ class CustomersQ: PFObject, PFSubclassing{
         return "CustomersQ"
     }
     
+    override init() {
+        super.init()
+    }
+    
     init(name_:String){
         super.init()
         qName = name_
+        numWaiting = 0
+        queue = [Customer]()
     }
     
     func addCustomer(customer_: Customer ) {
