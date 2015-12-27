@@ -30,6 +30,7 @@ class AccountSetupViewController: UIViewController {
         restaurant["description"] = description_ol.text
         restaurant["customersQList"] = createQ(numQueue)
         currentUser["restaurant"] = restaurant
+        currentRestaurant = restaurant
         currentUser.saveInBackgroundWithBlock { ( success: Bool, error: NSError?) -> Void in
             if !success {
                 //TODO:Handling erro

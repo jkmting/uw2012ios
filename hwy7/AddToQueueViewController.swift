@@ -42,10 +42,11 @@ class AddToQueueViewController: UIViewController {
                 if(!success) {
                     //TODO:error Handling
                 }
+                self.performSegueWithIdentifier("AddToQ2Queue_sg", sender: nil)
             })
             customersQ.addCustomer(customer)
             
-            self.performSegueWithIdentifier("AddToQ2Queue_sg", sender: nil)
+            
         }))
 
         confirmAlert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (action: UIAlertAction!) in

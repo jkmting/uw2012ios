@@ -224,13 +224,13 @@
         <!--Settings-->
         <scene sceneID="qaf-fK-7eg">
             <objects>
-                <tableViewController id="QDg-1w-LPf" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="GQN-5F-hob">
+                <tableViewController id="QDg-1w-LPf" customClass="SettingsTableViewController" customModule="hwy7" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="GQN-5F-hob">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.25490196078431371" green="0.67843137254901964" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="separatorColor" red="0.25490196078431371" green="0.67843137254901964" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="sectionIndexBackgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="sectionIndexBackgroundColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="sectionIndexTrackingBackgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
                             <tableViewSection headerTitle="General" id="UVv-h6-1fg">
@@ -272,6 +272,9 @@
                                             <color key="backgroundColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <segue destination="ajS-mA-2sh" kind="show" identifier="Setting2Restaurant_sg" id="m6s-go-UHL"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -362,10 +365,10 @@
             </objects>
             <point key="canvasLocation" x="872" y="1262"/>
         </scene>
-        <!--Setting-->
+        <!--Setting navigation-->
         <scene sceneID="Ih8-f8-RMB">
             <objects>
-                <navigationController title="Setting" hidesBottomBarWhenPushed="YES" id="OOO-VD-i0j" sceneMemberID="viewController">
+                <navigationController title="Setting navigation" hidesBottomBarWhenPushed="YES" id="OOO-VD-i0j" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Settings" id="jg3-G4-Vna"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Dcf-Mr-Q9T">
@@ -471,7 +474,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-204" y="-188"/>
+            <point key="canvasLocation" x="-166" y="-182"/>
         </scene>
         <!--Login-->
         <scene sceneID="GKw-pi-2dc">
@@ -485,7 +488,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HWY 7 Logo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fd0-3E-1W5">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="32bit" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fd0-3E-1W5">
                                 <rect key="frame" x="236" y="460" width="297" height="103"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="297" id="Ak5-uw-9sh"/>
@@ -557,6 +560,78 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5qe-qg-pHh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-204" y="-1409"/>
+        </scene>
+        <!--Restaurant-->
+        <scene sceneID="XT1-Tb-MX9">
+            <objects>
+                <viewController title="Restaurant" id="ajS-mA-2sh" customClass="UpdateRestaurantViewController" customModule="hwy7" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Dh2-8g-GTl"/>
+                        <viewControllerLayoutGuide type="bottom" id="Tbh-8P-szH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="w9E-bh-QZG" customClass="UIActionSheet">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name of your restaurant" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8va-DA-4pD">
+                                <rect key="frame" x="177" y="216" width="446" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9u1-d5-UdQ">
+                                <rect key="frame" x="177" y="300" width="446" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Description." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="FoM-1u-Hec">
+                                <rect key="frame" x="177" y="510" width="446" height="281"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qyr-gw-smP">
+                                <rect key="frame" x="377" y="908" width="65" height="30"/>
+                                <state key="normal" title="Update"/>
+                                <connections>
+                                    <action selector="update_ol:" destination="ajS-mA-2sh" eventType="touchUpInside" id="bOt-vP-cYu"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pu0-3t-2pO">
+                                <rect key="frame" x="231" y="561" width="253" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lLg-nJ-xw3">
+                                <rect key="frame" x="184" y="497" width="439" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fCh-17-ubp">
+                                <rect key="frame" x="177" y="392" width="165" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" red="0.94509803920000002" green="0.94509803920000002" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="Pu0-3t-2pO"/>
+                                <exclude reference="lLg-nJ-xw3"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
+                    <connections>
+                        <outlet property="address_ol" destination="9u1-d5-UdQ" id="QwW-ww-pel"/>
+                        <outlet property="description_ol" destination="FoM-1u-Hec" id="gje-iY-ema"/>
+                        <outlet property="name_ol" destination="8va-DA-4pD" id="UGh-eq-dkv"/>
+                        <outlet property="phone_ol" destination="fCh-17-ubp" id="U4t-0H-gDX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NTa-Fs-6ws" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2067" y="1262"/>
         </scene>
     </scenes>
     <resources>

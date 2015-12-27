@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class FirstViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, QueueCellDelegate {
     @IBOutlet weak var queueCollectionView_ol: UICollectionView!
@@ -17,6 +18,7 @@ class FirstViewController: UIViewController, UICollectionViewDelegate, UICollect
 
         collectionReload()
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

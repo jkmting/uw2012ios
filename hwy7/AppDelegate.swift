@@ -11,6 +11,7 @@ import Parse
 
 
 var customersQList = [CustomersQ]() //TODO: Remove it from golbal
+var currentRestaurant = PFObject(className: "Restaurant")
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

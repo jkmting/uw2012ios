@@ -59,7 +59,8 @@ class LogInViewController: UIViewController, PFLogInViewControllerDelegate, PFSi
                 queryRestaurant.includeKey("customersQList.queue")
                 queryRestaurant.findObjectsInBackgroundWithBlock({ (restaurants: [PFObject]?, error: NSError?) -> Void in
                     if let restaurants = restaurants  {
-                        for restaurant in restaurants {
+                        for restaurant in restaurants {// should only have one restaurant
+                            currentRestaurant = restaurant
                             customersQList = restaurant["customersQList"] as! [CustomersQ] //TODO: get the actual object
                             
                         }

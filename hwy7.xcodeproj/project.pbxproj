@@ -11,6 +11,7 @@
 		CA55C99B1C14DDCC00887AC5 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA55C99A1C14DDCC00887AC5 /* LogInViewController.swift */; };
 		CA55C99D1C1CC93500887AC5 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA55C99C1C1CC93500887AC5 /* Utils.swift */; };
 		CAADB32B1C2DF5DD0030EA04 /* AccountSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAADB32A1C2DF5DD0030EA04 /* AccountSetupViewController.swift */; };
+		CAADB3311C2F64BF0030EA04 /* UpdateRestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAADB3301C2F64BF0030EA04 /* UpdateRestaurantViewController.swift */; };
 		CADD0A011BFEB1EA008AC92A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADD0A001BFEB1EA008AC92A /* AppDelegate.swift */; };
 		CADD0A031BFEB1EA008AC92A /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADD0A021BFEB1EA008AC92A /* FirstViewController.swift */; };
 		CADD0A051BFEB1EA008AC92A /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADD0A041BFEB1EA008AC92A /* SecondViewController.swift */; };
@@ -19,6 +20,7 @@
 		CADD0A0D1BFEB1EA008AC92A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CADD0A0B1BFEB1EA008AC92A /* LaunchScreen.storyboard */; };
 		CADD0A151C025C5B008AC92A /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADD0A141C025C5B008AC92A /* CollectionViewCell.swift */; };
 		CADD0A191C03FCB2008AC92A /* Customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADD0A181C03FCB2008AC92A /* Customer.swift */; };
+		CAEAA15C1C2F6E4F008017AB /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAA15B1C2F6E4F008017AB /* SettingsTableViewController.swift */; };
 		E923D4E8A7C5299B38E7E8CE /* Pods_hwy7.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 414890A60D7EA4E41B9A9CA5 /* Pods_hwy7.framework */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +33,7 @@
 		CA55C99C1C1CC93500887AC5 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		CA9C33D7F1935B2DA2F8E242 /* Pods-hwy7.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hwy7.release.xcconfig"; path = "Pods/Target Support Files/Pods-hwy7/Pods-hwy7.release.xcconfig"; sourceTree = "<group>"; };
 		CAADB32A1C2DF5DD0030EA04 /* AccountSetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountSetupViewController.swift; sourceTree = "<group>"; };
+		CAADB3301C2F64BF0030EA04 /* UpdateRestaurantViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateRestaurantViewController.swift; sourceTree = "<group>"; };
 		CADD09FD1BFEB1EA008AC92A /* hwy7.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hwy7.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CADD0A001BFEB1EA008AC92A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CADD0A021BFEB1EA008AC92A /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -41,6 +44,7 @@
 		CADD0A0E1BFEB1EA008AC92A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CADD0A141C025C5B008AC92A /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionViewCell.swift; path = ../CollectionViewCell.swift; sourceTree = "<group>"; };
 		CADD0A181C03FCB2008AC92A /* Customer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Customer.swift; path = ../Customer.swift; sourceTree = "<group>"; };
+		CAEAA15B1C2F6E4F008017AB /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +102,8 @@
 				CA55C99A1C14DDCC00887AC5 /* LogInViewController.swift */,
 				CA55C99C1C1CC93500887AC5 /* Utils.swift */,
 				CAADB32A1C2DF5DD0030EA04 /* AccountSetupViewController.swift */,
+				CAADB3301C2F64BF0030EA04 /* UpdateRestaurantViewController.swift */,
+				CAEAA15B1C2F6E4F008017AB /* SettingsTableViewController.swift */,
 			);
 			path = hwy7;
 			sourceTree = "<group>";
@@ -236,9 +242,11 @@
 				CADD0A051BFEB1EA008AC92A /* SecondViewController.swift in Sources */,
 				CAADB32B1C2DF5DD0030EA04 /* AccountSetupViewController.swift in Sources */,
 				CADD0A011BFEB1EA008AC92A /* AppDelegate.swift in Sources */,
+				CAEAA15C1C2F6E4F008017AB /* SettingsTableViewController.swift in Sources */,
 				CADD0A191C03FCB2008AC92A /* Customer.swift in Sources */,
 				CA55C99B1C14DDCC00887AC5 /* LogInViewController.swift in Sources */,
 				CADD0A151C025C5B008AC92A /* CollectionViewCell.swift in Sources */,
+				CAADB3311C2F64BF0030EA04 /* UpdateRestaurantViewController.swift in Sources */,
 				CADD0A031BFEB1EA008AC92A /* FirstViewController.swift in Sources */,
 				CA08CFEE1C06AC7F002E22C8 /* AddToQueueViewController.swift in Sources */,
 				CA55C99D1C1CC93500887AC5 /* Utils.swift in Sources */,
