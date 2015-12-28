@@ -32,14 +32,21 @@ class SettingsTableViewController: UITableViewController {
 
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        print("\(indexPath.section)")
+        print("User select Setting: \(indexPath.section),\(indexPath.row)")
         switch (indexPath.section,indexPath.row) {
         case (2,0)://Log Out
-            ///PFUser.logOutInBackgroundWithBlock({ (success: NSError?) -> Void in
-            //self.performSegueWithIdentifier("Logout_sg", sender: nil)
-            print("Logout!")
-            //})
+            print("User selected Log Out")
+            let confirmAlert = UIAlertController(title: "Log out", message: "Do you want to logout on this device?", preferredStyle: UIAlertControllerStyle.Alert)
             
+            confirmAlert.addAction(UIAlertAction(title: "Log Out", style: .Default, handler: { (action: UIAlertAction!) in
+                logout()
+            }))
+            
+            confirmAlert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (action: UIAlertAction!) in
+                
+            }))
+            presentViewController(confirmAlert, animated: true, completion: nil)
+
         default:
             break
         }

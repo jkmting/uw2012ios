@@ -7,7 +7,8 @@
 //
 
 import Foundation
-
+import Parse
+import UIKit
 
 func showAlert(title_:String, msg_:String, controler_:UIViewController) {
     let alert = UIAlertController(title: title_, message: msg_, preferredStyle: UIAlertControllerStyle.Alert)
@@ -16,3 +17,16 @@ func showAlert(title_:String, msg_:String, controler_:UIViewController) {
     controler_.presentViewController(alert, animated: true, completion: nil)
 }
 
+func logout() {
+    PFUser.logOutInBackgroundWithBlock({ (error: NSError?) -> Void in
+        if error == nil {
+            
+            let appDelegateTemp = UIApplication.sharedApplication().delegate
+            let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            print("Logout")
+            let rootController =      mainStoryboard.instantiateViewControllerWithIdentifier("LoginViewController_sid")
+            appDelegateTemp!.window!!.rootViewController = rootController
+            print("Logout!")
+        }
+    })
+}

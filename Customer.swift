@@ -82,11 +82,13 @@ class CustomersQ: PFObject, PFSubclassing{
     }
     
     func addCustomer(customer_: Customer ) {
+        print("Add customer to Queue")
         queue.append(customer_)
         ++numWaiting
         //update to server
         self.saveInBackgroundWithBlock({ (success: Bool,error: NSError?) -> Void in
             if !success {
+                print("Failed to save data to server: \(__FUNCTION__)")
                 //TODO:Handling erro
             }
         })

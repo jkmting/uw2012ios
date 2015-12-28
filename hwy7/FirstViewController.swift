@@ -14,11 +14,12 @@ class FirstViewController: UIViewController, UICollectionViewDelegate, UICollect
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-
-        collectionReload()
+    
     }
     
+    override func viewWillAppear(animated: Bool) {
+        collectionReload()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

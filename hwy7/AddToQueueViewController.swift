@@ -42,7 +42,8 @@ class AddToQueueViewController: UIViewController {
                 if(!success) {
                     //TODO:error Handling
                 }
-                self.performSegueWithIdentifier("AddToQ2Queue_sg", sender: nil)
+                //done adding customer
+                self.navigationController?.popViewControllerAnimated(true)
             })
             customersQ.addCustomer(customer)
             
@@ -53,6 +54,7 @@ class AddToQueueViewController: UIViewController {
             
         }))
         
+        //show alert
         presentViewController(confirmAlert, animated: true, completion: nil)
         
 
