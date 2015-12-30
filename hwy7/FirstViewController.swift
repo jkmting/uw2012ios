@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class FirstViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, QueueCellDelegate {
+class FirstViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, QueueCellDelegate {
     @IBOutlet weak var queueCollectionView_ol: UICollectionView!
 
     override func viewDidLoad() {
@@ -26,6 +26,8 @@ class FirstViewController: UIViewController, UICollectionViewDelegate, UICollect
         // Dispose of any resources that can be recreated.
     }
 
+    // ---------- UICollectionView Setting ----------
+    
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return customersQList.count
     }
@@ -34,23 +36,25 @@ class FirstViewController: UIViewController, UICollectionViewDelegate, UICollect
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Queue", forIndexPath: indexPath) as! CollectionViewCell
         let customersQ = customersQList[indexPath.row]
         
-        cell.name_ol.text = customersQ.qName
+        cell.name_ol.text = "Party Size \(customersQ.qName!)"
         cell.pplInQueue_ol.text = "\(customersQ.numWaiting)"
         cell.delegate = self
-        
-        //set up contents in object queue
-        /*
-        cell.pplInQueue.backgroundColor = UIColor.clearColor()
-        
-        cell.pplInQueue.layer.cornerRadius = 80
-        cell.pplInQueue.layer.borderWidth = 10
-        cell.pplInQueue.layer.borderColor = UIColor.blackColor().CGColor
-        cell.seat.layer.borderColor = UIColor.blackColor().CGColor
-        cell.eddit.layer.borderColor = UIColor.blackColor().CGColor
-        */
+        cell.partySize = Int(customersQ.qName!)! //TODO:make qName to int
+        cell.layer.cornerRadius = 10
         return cell
     }
     
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        //get the selected cell
+        let cell = collectionView.cellForItemAtIndexPath(indexPath) as! CollectionViewCell
+        print("Selected Queue \(cell.name_ol.text): \(indexPath.section), \(indexPath.row)")
+        cell.notify(self)
+    }
+
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return 20.0
+    }
+    // ---------- UICollectionView Setting ----------
     func presentAlert(controller_: UIViewController) {
         presentViewController(controller_, animated: true, completion: nil)
     }

@@ -21,9 +21,10 @@ class LogInViewController: UIViewController, PFLogInViewControllerDelegate, PFSi
     override func viewDidAppear(animated: Bool) {
         
         super.viewDidAppear(true)
-        PFUser.logOut()
-        if let _ = PFUser.currentUser() {
-            self.performSegueWithIdentifier("LogIn2Queue_sg", sender: nil)
+        //PFUser.logOut()
+        if let user = PFUser.currentUser() {
+            //user already logged in
+            self.logInTo32bits(user)
         } else { //present the login screen
             let logInController = PFLogInViewController()
             logInController.delegate = self
@@ -47,33 +48,8 @@ class LogInViewController: UIViewController, PFLogInViewControllerDelegate, PFSi
     
     func logInViewController(logInController: PFLogInViewController, didLogInUser user: PFUser) {
         self.dismissViewControllerAnimated(false) { () -> Void in
-            
             //Logged in!
-            let currentUser = PFUser.currentUser()!
-            //goto Setup Screen if no restaurant object
-            if let restaurant = currentUser["restaurant"] as! PFObject? {
-                //load cusomtersQList
-                let queryRestaurant = PFQuery(className: "Restaurant")
-                queryRestaurant.whereKey("objectId", matchesRegex: restaurant.objectId!)
-                queryRestaurant.includeKey("customersQList")
-                queryRestaurant.includeKey("customersQList.queue")
-                queryRestaurant.findObjectsInBackgroundWithBlock({ (restaurants: [PFObject]?, error: NSError?) -> Void in
-                    if let restaurants = restaurants  {
-                        for restaurant in restaurants {// should only have one restaurant
-                            currentRestaurant = restaurant
-                            customersQList = restaurant["customersQList"] as! [CustomersQ] //TODO: get the actual object
-                            
-                        }
-                    //Go to Queue
-                    //print("\(customersQList[4].queue)")
-                    self.performSegueWithIdentifier("LogIn2Queue_sg", sender: nil)
-                    }
-                })
-                
-            } else {
-                //Go to Setup
-                self.performSegueWithIdentifier("LogIn2Setup_sg", sender: nil)
-            }
+            self.logInTo32bits(user)
         }
 
     }
@@ -104,7 +80,36 @@ class LogInViewController: UIViewController, PFLogInViewControllerDelegate, PFSi
         // Dispose of any resources that can be recreated.
     }
     
-    
+    func logInTo32bits(currentUser: PFUser) {
+        //add user to installation
+        let installation = PFInstallation.currentInstallation()
+        installation["user"] = currentUser
+        installation.saveInBackground()
+        //goto Setup Screen if no restaurant object
+        if let restaurant = currentUser["restaurant"] as! PFObject? {
+            //load cusomtersQList
+            let queryRestaurant = PFQuery(className: "Restaurant")
+            queryRestaurant.whereKey("objectId", matchesRegex: restaurant.objectId!)
+            queryRestaurant.includeKey("customersQList")
+            queryRestaurant.includeKey("customersQList.queue")
+            queryRestaurant.findObjectsInBackgroundWithBlock({ (restaurants: [PFObject]?, error: NSError?) -> Void in
+                if let restaurants = restaurants  {
+                    for restaurant in restaurants {// should only have one restaurant
+                        currentRestaurant = restaurant
+                        customersQList = restaurant["customersQList"] as! [CustomersQ] //TODO: get the actual object
+                        
+                    }
+                    //Go to Queue
+                    //print("\(customersQList[4].queue)")
+                    self.performSegueWithIdentifier("LogIn2Queue_sg", sender: nil)
+                }
+            })
+        } else {
+            //Go to Setup
+            self.performSegueWithIdentifier("LogIn2Setup_sg", sender: nil)
+        }
+        
+    }
 
     /*
     // MARK: - Navigation

@@ -16,21 +16,21 @@ protocol QueueCellDelegate : NSObjectProtocol {
 class CollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var name_ol: UILabel!
     @IBOutlet weak var pplInQueue_ol: UILabel!
-    @IBOutlet weak var seat_ol: UIButton!
+    var partySize: Int!
     weak var delegate: QueueCellDelegate?
-    
-    @IBAction func seat(sender: AnyObject) {
+
+    func notify(sender: AnyObject) {
         
-        let customerQ = customersQList[Int(name_ol.text!)! - 1]
+        let customerQ = customersQList[partySize - 1]
         if customerQ.numWaiting == 0 {
             return
         }
         let firstCustomer = customerQ.peek()!
-        let confirmAlert = UIAlertController(title: "Seat Customer", message: "Push confirm to Seat Customer \n" +
+        let confirmAlert = UIAlertController(title: "Notify Customer", message: "Confirm to notify Customer \n" +
             "Name  : \(firstCustomer.name)\n" +
             "Phone : \(firstCustomer.phone)\n", preferredStyle: UIAlertControllerStyle.Alert)
         
-        confirmAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction!) in
+        confirmAlert.addAction(UIAlertAction(title: "Confirm", style: .Default, handler: { (action: UIAlertAction!) in
             let customerQ = customersQList[Int(self.name_ol.text!)! - 1]
             print("Name:\(self.name_ol.text!)")
             print("\(customerQ.qName)")
@@ -48,4 +48,5 @@ class CollectionViewCell: UICollectionViewCell {
             delegate?.presentAlert(confirmAlert)
         }
     }
+
 }
