@@ -29,18 +29,40 @@ class FirstViewController: UIViewController, UICollectionViewDelegate, UICollect
     // ---------- UICollectionView Setting ----------
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return customersQList.count
+        // Only show queue that has customers lining up
+        var showQ = customersQList.count
+        for queue in customersQList {
+            if queue.numWaiting == 0 {
+                showQ--
+            }
+        }
+        return showQ
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Queue", forIndexPath: indexPath) as! CollectionViewCell
-        let customersQ = customersQList[indexPath.row]
         
-        cell.name_ol.text = "Party Size \(customersQ.qName!)"
-        cell.pplInQueue_ol.text = "\(customersQ.numWaiting)"
-        cell.delegate = self
-        cell.partySize = Int(customersQ.qName!)! //TODO:make qName to int
-        cell.layer.cornerRadius = 10
+        //find the nth Q that has customers lining up (where n = indexPath.row)
+        var Qshown = 0
+        for customersQ in customersQList {
+            if customersQ.numWaiting > 0 {
+                if Qshown == indexPath.row {
+                    //Found it
+                    cell.name_ol.text = "Party Size \(customersQ.qName!)"
+                    cell.pplInQueue_ol.text = "\(customersQ.numWaiting)"
+                    cell.delegate = self
+                    cell.partySize = Int(customersQ.qName!)! //TODO:make qName to int
+                    cell.layer.cornerRadius = 10
+                    break
+                } else {
+                    //increase the number of Queue that we alread set the cell to
+                    Qshown++
+                }
+                
+            }
+        }
+        
+
         return cell
     }
     

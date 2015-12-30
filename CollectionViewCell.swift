@@ -31,7 +31,7 @@ class CollectionViewCell: UICollectionViewCell {
             "Phone : \(firstCustomer.phone)\n", preferredStyle: UIAlertControllerStyle.Alert)
         
         confirmAlert.addAction(UIAlertAction(title: "Confirm", style: .Default, handler: { (action: UIAlertAction!) in
-            let customerQ = customersQList[Int(self.name_ol.text!)! - 1]
+            let customerQ = customersQList[self.partySize - 1]
             print("Name:\(self.name_ol.text!)")
             print("\(customerQ.qName)")
             customerQ.seat()
