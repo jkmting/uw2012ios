@@ -12,6 +12,7 @@ class AddToQueueViewController: UIViewController {
     @IBOutlet weak var name_ol: UITextField!
     @IBOutlet weak var numPeople_ol: UITextField!
     @IBOutlet weak var phone_ol: UITextField!
+    @IBOutlet weak var note_ol: UITextView!
 
     override func viewDidLoad() {
 
@@ -35,9 +36,11 @@ class AddToQueueViewController: UIViewController {
             "Number of people : \(numPeople_ol.text!)", preferredStyle: UIAlertControllerStyle.Alert)
         
         confirmAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction!) in
-            let numPeople = Int(self.numPeople_ol.text!)! - 1
-            let customersQ = customersQList[numPeople] //TODO: should use find QList method
+            let numPeople = Int(self.numPeople_ol.text!)! 
+            let customersQ = customersQList[numPeople - 1] //TODO: should use find QList method
             let customer = Customer(name_: self.name_ol.text!, phone_: phone, ppl_: numPeople)
+            customer.note = self.note_ol.text
+            print("PPL!!!\(String(customer.ppl))")
             customer.saveInBackgroundWithBlock({ (success: Bool, error: NSError?) -> Void in
                 if(!success) {
                     //TODO:error Handling
