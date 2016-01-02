@@ -67,7 +67,11 @@ class FirstViewController: UIViewController, UICollectionViewDelegate, UICollect
     }
     
     func setQueueViewData(customersQ_: CustomersQ, cell_: CollectionViewCell) {
-        cell_.name_ol.text = "Party Size \(customersQ_.qName!)"
+        var LastQueue = ""
+        if customersQ_ == customersQList.last { // the last Queue should have a plus size
+            LastQueue = "+"
+        }
+        cell_.name_ol.text = "Party Size \(customersQ_.qName!)\(LastQueue)"
         cell_.pplInQueue_ol.text = "\(customersQ_.numWaiting)"
         cell_.delegate = self
         cell_.partySize = Int(customersQ_.qName!)! //TODO:make qName to int

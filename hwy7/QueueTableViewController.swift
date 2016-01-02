@@ -39,8 +39,7 @@ class QueueTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("TableQueue", forIndexPath: indexPath) as! QueueTableViewCell
         cell.name_ol.text = "Name : \(customersQ!.queue[indexPath.row].name)"
         cell.phone_ol.text = "Phone : \(customersQ!.queue[indexPath.row].phone)"
-        print( "PPLS!!!\(String(customersQ!.queue[indexPath.row].ppl))")
-        cell.partySize_ol.text = "Party Size : \(String(customersQ!.queue[indexPath.row].ppl))"
+        cell.partySize_ol.text = "Party Size : \(String(customersQ!.queue[indexPath.row].partySize))"
         cell.note_ol.text = customersQ?.queue[indexPath.row].note
         
         

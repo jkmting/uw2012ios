@@ -30,17 +30,18 @@ class AddToQueueViewController: UIViewController {
         let name = (name_ol.text != nil) ? name_ol.text! : ""
         let phone = phone_ol.text!
         
-        let confirmAlert = UIAlertController(title: "Add Customer", message: "Push confirm to add Customer \n" +
+        let confirmAlert = UIAlertController(title: "Add Customer", message: "Press confirm to add Customer \n" +
             "Name  : \(name)\n" +
             "Phone : \(phone)\n" +
             "Number of people : \(numPeople_ol.text!)", preferredStyle: UIAlertControllerStyle.Alert)
         
         confirmAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction!) in
-            let numPeople = Int(self.numPeople_ol.text!)! 
+            var numPeople = Int(self.numPeople_ol.text!)!
+            //if the partySize > max Q size, add it the the max Q
+            numPeople = numPeople >= customersQList.count ? customersQList.count : numPeople
             let customersQ = customersQList[numPeople - 1] //TODO: should use find QList method
-            let customer = Customer(name_: self.name_ol.text!, phone_: phone, ppl_: numPeople)
+            let customer = Customer(name_: self.name_ol.text!, phone_: phone, partySize_: numPeople)
             customer.note = self.note_ol.text
-            print("PPL!!!\(String(customer.ppl))")
             customer.saveInBackgroundWithBlock({ (success: Bool, error: NSError?) -> Void in
                 if(!success) {
                     //TODO:error Handling

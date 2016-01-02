@@ -15,7 +15,8 @@ class Customer: PFObject, PFSubclassing {
     @NSManaged var note:String
     @NSManaged var status:String
     @NSManaged var app:Bool
-    @NSManaged var ppl:Int
+    @NSManaged var partySize:Int
+    
     //Parse properties
     //@NSManaged var createdAt:NSDate?
     //@NSManaged var objectId:String
@@ -37,13 +38,13 @@ class Customer: PFObject, PFSubclassing {
         super.init()
     }
 
-    init(name_:String="", phone_:String="", ppl_:Int=1) {
+    init(name_:String="", phone_:String="", partySize_:Int=1, app_:Bool=false) {
         super.init()
         name = name_
         phone = phone_
-        ppl = ppl_
+        partySize = partySize_
         status = "Waiting"
-        app = false
+        app = app_
     }
     
 }
@@ -107,6 +108,7 @@ class CustomersQ: PFObject, PFSubclassing{
         else {
              ret = queue.removeAtIndex(index_)
         }
+        //TODO:all removed customer should be show in the history tap
         //update to server
         self.saveInBackgroundWithBlock({ (success: Bool,error: NSError?) -> Void in
             if !success {
@@ -120,6 +122,12 @@ class CustomersQ: PFObject, PFSubclassing{
     
     func seat() -> Customer? {
         return removeCustomer(0)
+    }
+    
+    func next() {
+        if !queue.first!.app {
+            removeCustomer(0)
+        }
     }
     
     func peek() -> Customer? {

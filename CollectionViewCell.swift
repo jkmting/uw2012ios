@@ -26,7 +26,8 @@ class CollectionViewCell: UICollectionViewCell {
             return
         }
         let firstCustomer = customerQ.peek()!
-        let confirmAlert = UIAlertController(title: "Notify Customer", message: "Confirm to notify Customer \n" +
+        
+        let confirmAlert = UIAlertController(title: "Seat Customer", message: "Confirm to Seat Customer \n Press Next to Notify next customer" +
             "Name  : \(firstCustomer.name)\n" +
             "Phone : \(firstCustomer.phone)\n", preferredStyle: UIAlertControllerStyle.Alert)
         
@@ -37,6 +38,17 @@ class CollectionViewCell: UICollectionViewCell {
             customerQ.seat()
             //disable seat button if queue empty
 
+            self.delegate?.collectionReload()
+        }))
+        
+        confirmAlert.addAction(UIAlertAction(title: "Next", style: .Default, handler: { (action: UIAlertAction!) in
+            let customerQ = customersQList[self.partySize - 1]
+            print("Name:\(self.name_ol.text!)")
+            print("\(customerQ.qName)")
+            customerQ.next()
+            self.notify(sender)
+            //disable seat button if queue empty
+            
             self.delegate?.collectionReload()
         }))
         
